@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 const Meals = () => {
   const [loadedMeals, setLoadedMeals] = useState([]);
 
-  // useEffect(() => {
-  //   async function getMeals() {
-  //     const response = await Axios.get("http://localhost:3000/meals");
-  //     setLoadedMeals(response.data);
-  //   }
-  //   getMeals();
-  // }, []);
+  useEffect(() => {
+    async function getMeals() {
+      const response = await Axios.get("http://localhost:3000/meals");
+      setLoadedMeals(response.data);
+    }
+    getMeals();
+  }, []);
 
-  // console.log("meals Data=>", loadedMeals);
+  console.log("meals Data=>", loadedMeals);
 
   return (
     <>
