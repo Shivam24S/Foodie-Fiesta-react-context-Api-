@@ -19,19 +19,27 @@ const CartCheckOut = () => {
     userProgressCtx.hideCart();
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const fd = new FormData(event.target);
+    const customerData = Object.fromEntries(fd.entries());
+    console.log("formData: ", customerData);
+  };
+
   return (
     <Modal
       open={userProgressCtx.progress === "checkout"}
       onClose={userProgressCtx.progress === "checkout" ? handleClose : null}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>checkout</h2>
         <p>Total Amount {currencyFormatter.format(total)}</p>
         <Input label="Full Name" id="full-name" type="text" />
         <Input label="E-mail Address" id="email" type="email" />
         <Input label="street" id="street" type="text" />
         <div className="control-row">
-          <Input label="Postal Code" id="postal-code" type="text" />
+          <Input label="Postal Code" id="postal-code" type="number" />
           <Input label="City" id="city" type="text" />
         </div>
         <p className="modal-actions">
