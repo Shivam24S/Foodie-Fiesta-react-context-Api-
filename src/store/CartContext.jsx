@@ -1,37 +1,3 @@
-// import { createContext, useState } from "react";
-
-// const CartContext = createContext({
-//   items: [],
-//   addItems: (item) => {},
-//   removeItems: (id) => {},
-// });
-
-// export function CartContextProvider({ children }) {
-//   const [items, setItems] = useState([]);
-
-//   const handleAddItems = (items) => {
-//     setItems((prevItems) => [items, ...prevItems]);
-//   };
-
-//   const handleRemoveItems = (id) => {
-//     const UpdatedData = items.filter((item) => item.id !== id);
-//     setItems(UpdatedData);
-//   };
-
-//   const CartValues = {
-//     items,
-//     addItems: handleAddItems,
-//     removeItems: handleRemoveItems,
-//   };
-
-//   console.log("cartContext", CartValues);
-
-//   return (
-//     <CartContext.Provider value={CartValues}>{children}</CartContext.Provider>
-//   );
-// }
-// export default CartContext;
-
 import { createContext, useState } from "react";
 
 const CartContext = createContext({
