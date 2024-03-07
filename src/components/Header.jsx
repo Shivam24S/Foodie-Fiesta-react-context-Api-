@@ -2,13 +2,21 @@ import { useContext } from "react";
 import logoImg from "../assets/logo.jpg";
 import Button from "./UI/Button";
 import CartContext from "../store/CartContext";
+import UserProgress from "../store/UserProgress";
 
 const Header = () => {
   const cartCtx = useContext(CartContext);
 
-  const Total = cartCtx.items.reduce((totalItems, item) => {
+  const total = cartCtx.items.reduce((totalItems, item) => {
     return totalItems + item.quantity;
   }, 0);
+
+  const userProgressCtx = useContext(UserProgress);
+
+  const handleShowCart = () => {
+    userProgressCtx.showCart();
+    console.log("button pressed", userProgressCtx);
+  };
 
   return (
     <>
@@ -18,7 +26,9 @@ const Header = () => {
           <h1>Foodie</h1>
         </div>
         <nav>
-          <Button textOnly>Cart({Total})</Button>
+          <Button textOnly onClick={handleShowCart}>
+            Cart({total})
+          </Button>
         </nav>
       </header>
     </>
