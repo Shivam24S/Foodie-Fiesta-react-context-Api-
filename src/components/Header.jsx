@@ -23,7 +23,7 @@ const Header = () => {
       <header id="main-header">
         <div id="title">
           <img src={logoImg} alt="Logo" />
-          <h1>Foodie</h1>
+          <h1>FoodieFiesta</h1>
         </div>
         <nav>
           <Button textOnly onClick={handleShowCart}>
