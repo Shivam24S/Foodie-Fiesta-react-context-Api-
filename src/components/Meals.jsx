@@ -1,5 +1,6 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
+import MealsItem from "./MealsItem";
 
 const Meals = () => {
   const [loadedMeals, setLoadedMeals] = useState([]);
@@ -41,7 +42,7 @@ const Meals = () => {
     <>
       <ul id="meals">
         {loadedMeals.map((meals) => (
-          <li key={meals.id}>{meals.name}</li>
+          <MealsItem key={meals.id} meal={meals} />
         ))}
       </ul>
     </>
