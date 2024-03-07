@@ -5,6 +5,7 @@ import { currencyFormatter } from "../util/formatting";
 import Input from "./UI/Input";
 import Button from "./UI/Button";
 import CartContext from "../store/CartContext";
+import Axios from "axios";
 
 const CartCheckOut = () => {
   const cartCtx = useContext(CartContext);
@@ -24,7 +25,16 @@ const CartCheckOut = () => {
 
     const fd = new FormData(event.target);
     const customerData = Object.fromEntries(fd.entries());
-    console.log("formData: ", customerData);
+
+    Axios.post("http://localhost:3000/orders", {
+      order: {
+        items: cartCtx.items,
+        customer: customerData,
+      },
+      // Optionally, you can handle success response here
+    }).then((response) => {
+      console.log("Order placed successfully:", response.data);
+    });
   };
 
   return (
@@ -35,7 +45,7 @@ const CartCheckOut = () => {
       <form onSubmit={handleSubmit}>
         <h2>checkout</h2>
         <p>Total Amount {currencyFormatter.format(total)}</p>
-        <Input label="Full Name" id="full-name" type="text" />
+        <Input label="Full Name" id="name" type="text" />
         <Input label="E-mail Address" id="email" type="email" />
         <Input label="street" id="street" type="text" />
         <div className="control-row">
