@@ -4,6 +4,7 @@ const CartContext = createContext({
   items: [],
   addItems: (item) => {},
   removeItems: (id) => {},
+  clearCart: () => {},
 });
 
 export function CartContextProvider({ children }) {
@@ -98,10 +99,15 @@ export function CartContextProvider({ children }) {
     });
   };
 
+  const handleClearCart = () => {
+    setItems([]);
+  };
+
   const cartValues = {
     items,
     addItems: handleAddItems,
     removeItems: handleRemoveItems,
+    clearCart: handleClearCart,
   };
 
   console.log("items", cartValues.items);

@@ -322,3 +322,23 @@ h1 {
       0 0 #e3aad6;
   }
 }
+
+/* Error.css */
+.error {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffdddd;
+  border-left: 6px solid #f44336;
+  max-width: 500px;
+  color: #333;
+}
+
+.error h2 {
+  margin-top: 0;
+  color: #d8000c;
+}
+
+.error p {
+  margin: 10px 0 0;
+  color: #666;
+}

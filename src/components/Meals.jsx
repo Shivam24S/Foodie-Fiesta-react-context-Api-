@@ -1,8 +1,7 @@
-import Axios from "axios";
-import { useEffect, useState } from "react";
 import MealsItem from "./MealsItem";
 import useHttp from "./hooks/useHttp";
 import Loader from "./Loader";
+import Error from "./Error";
 
 const requestConfig = {};
 
@@ -19,6 +18,10 @@ const Meals = () => {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (error) {
+    return <Error title="Failed to fetch Food Data" message={error} />;
   }
 
   console.log("meals Data=>", loadedMeals);
