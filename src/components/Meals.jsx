@@ -1,40 +1,25 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import MealsItem from "./MealsItem";
+import useHttp from "./hooks/useHttp";
+import Loader from "./Loader";
+
+const requestConfig = {};
 
 const Meals = () => {
-  const [loadedMeals, setLoadedMeals] = useState([]);
+  // now here i m using custom hook for sending http request to get data because while sending request there two state i have to handle
+  // loading and error  and i  m here using two time http request and i want this both state in both http request thats why i created
+  // custom hook http request where i m manage both state i can use another http request as well
 
-  // here i m using browser built in method fetch for https requests
+  const {
+    data: loadedMeals,
+    isLoading,
+    error,
+  } = useHttp("http://localhost:3000/meals", requestConfig, []);
 
-  // useEffect(() => {
-  //   try {
-  //     async function getMeals() {
-  //       const response = await fetch("http://localhost:3000/meals");
-  //       const meals = await response.json();
-  //       setLoadedMeals(meals);
-  //     }
-  //     getMeals();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, []);
-
-  // here i m using external axios library for https request
-  // its preferred because you don't have to convert data in json format
-  // it easy to use
-
-  useEffect(() => {
-    try {
-      async function getMeals() {
-        const response = await Axios.get("http://localhost:3000/meals");
-        setLoadedMeals(response.data);
-      }
-      getMeals();
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  if (isLoading) {
+    return <Loader />;
+  }
 
   console.log("meals Data=>", loadedMeals);
 
