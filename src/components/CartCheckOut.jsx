@@ -13,6 +13,17 @@ const requestConfig = {
   headers: { "Content-Type": "application/json" },
 };
 
+// const CartCheckOut = () => {
+//   const {
+//     data,
+//     isLoading: isSending,
+//     error,
+//     sendRequest,
+//     clearData,
+//   } = useHttp("http://localhost:3000/orders", requestConfig);
+
+// hosted api
+
 const CartCheckOut = () => {
   const {
     data,
@@ -20,7 +31,10 @@ const CartCheckOut = () => {
     error,
     sendRequest,
     clearData,
-  } = useHttp("http://localhost:3000/orders", requestConfig);
+  } = useHttp(
+    "https://backend-food-order-lsom.onrender.com/orders",
+    requestConfig
+  );
 
   const cartCtx = useContext(CartContext);
 

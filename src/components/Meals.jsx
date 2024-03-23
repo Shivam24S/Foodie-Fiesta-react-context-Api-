@@ -10,11 +10,22 @@ const Meals = () => {
   // loading and error  and i  m here using two time http request and i want this both state in both http request thats why i created
   // custom hook http request where i m manage both state i can use another http request as well
 
+  // const {
+  //   data: loadedMeals,
+  //   isLoading,
+  //   error,
+  // } = useHttp("http://localhost:3000/meals", requestConfig, []);
+
+  // using hosted backend
   const {
     data: loadedMeals,
     isLoading,
     error,
-  } = useHttp("http://localhost:3000/meals", requestConfig, []);
+  } = useHttp(
+    "https://backend-food-order-lsom.onrender.com/meals",
+    requestConfig,
+    []
+  );
 
   if (isLoading) {
     return <Loader />;
