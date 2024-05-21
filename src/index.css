@@ -343,3 +343,26 @@ h1 {
   margin: 10px 0 0;
   color: #666;
 }
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+  #main-header {
+    justify-content: space-around;
+    padding: 1rem;
+  }
+  #title {
+    justify-content: space-around;
+    overflow: hidden;
+  }
+  #title img {
+    scale: 0.8;
+  }
+  #title h1 {
+    font-size: 17px;
+  }
+  .cart-item p {
+    font-size: 0.8rem;
+  }
+  .modal-actions {
+    text-align: center;
+  }
+}
